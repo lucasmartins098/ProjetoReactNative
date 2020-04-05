@@ -31,7 +31,7 @@ class DetailsScreen extends React.Component {
                 <Button
                     title="Go to Details... again"
                     onPress={() => this.props.navigation.push('Details')} />
-                <Button title="Go to Home" onPress={() => this.props.navigation.navigate('Home')} />
+                <Button title="Go to Home" onPress={() => this.props.navigation.navigate('Login')} />
                 <Button title="retorno Dados" onPress={() => this.props.navigation.push('retornoDados')} />
                 <Button title="Go back" onPress={() => this.props.navigation.goBack()} />
                 <Button
