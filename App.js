@@ -7,7 +7,7 @@ import "./Paginas/StatusBarConfig";
 
 import HomeScreen from './Paginas/Home';
 import DetailsScreen from './Paginas/Detalhes';
-import retornoDados from  './Paginas/retornoDados';
+import retornoDados from './Paginas/retornoDados';
 
 const Stack = createStackNavigator();
 
@@ -23,9 +23,14 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{ header: titulo }, {headerStyle:{backgroundColor: "red"}}} />
-        <Stack.Screen name="Details" component={DetailsScreen} options={ { header: titulo }} />
-        <Stack.Screen name="retornoDados" component={retornoDados} options={ { header: titulo }} />
+        <Stack.Screen name="Login" component={HomeScreen} options={{ header: "Login",text:"Login" }, {
+          headerStyle: {
+            backgroundColor: "#2CB965", 
+            alignItems: 'center',textAlign:"center",
+          }
+        }} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ header: titulo }} />
+        <Stack.Screen name="retornoDados" component={retornoDados} options={{ header: titulo }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
