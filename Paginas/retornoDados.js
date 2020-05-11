@@ -116,7 +116,7 @@ import * as React from 'react';
 import { FlatList, ActivityIndicator, Text, View } from 'react-native';
 import { Header } from 'react-native-elements'
 
-class retornoDados extends React.Component {
+class RetornoDados extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true }
@@ -144,4 +144,4 @@ class retornoDados extends React.Component {
   }
 }
 
-export default retornoDados;
+export default RetornoDados;

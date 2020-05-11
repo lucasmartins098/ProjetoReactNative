@@ -7,8 +7,9 @@ import "./Paginas/StatusBarConfig";
 
 import HomeScreen from './Paginas/Home';
 import DetailsScreen from './Paginas/Detalhes';
-import retornoDados from './Paginas/retornoDados';
-import cadastroUsuario from './Paginas/CadastroUsuario';
+import RetornoDados from './Paginas/RetornoDados';
+import CadastroUsuario from './Paginas/CadastroUsuario';
+import HomeNColetor from './Paginas/HomeNColetor';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,14 @@ const tituloCadastro = function tituloComponent() {
     backgroundColor="#2CB965"
     centerComponent={{ text: 'Cadastro', style: { color: 'black', fontSize: "20px", fontWeight: "bold" } }}
     rightComponent={{ icon: 'assignment', color: '#fff' }}
+  />);
+}
+
+const PaginaInicialTitulo = function tituloComponent() {
+  return (<Header
+    backgroundColor="#2CB965"
+    centerComponent={{ text: 'Página Inicial', style: { color: 'black', fontSize: "20px", fontWeight: "bold" } }}
+    rightComponent={{ icon: 'home', color: '#fff' }}
   />);
 }
 
@@ -35,8 +44,9 @@ function App() {
           headerShown: false
         }} />
         <Stack.Screen name="Details" component={DetailsScreen} options={{ header: tituloCadastro }} />
-        <Stack.Screen name="retornoDados" component={retornoDados} options={{ header: tituloCadastro }} />
-        <Stack.Screen name="cadastroUsuario" component={cadastroUsuario} options={{ header: tituloCadastro }} />
+        <Stack.Screen name="RetornoDados" component={RetornoDados} options={{ header: tituloCadastro }} />
+        <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} options={{ header: tituloCadastro }} />
+        <Stack.Screen name="HomeNColetor" component={HomeNColetor} options={{ header: PaginaInicialTitulo }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

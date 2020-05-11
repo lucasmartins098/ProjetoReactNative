@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import { Button, View, Text, TextInput, br } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Header, Input } from 'react-native-elements'
@@ -53,7 +53,7 @@ class HomeScreen extends React.Component {
                     console.log(responseJson);
                 });
 
-                this.props.navigation.navigate('Details');
+                this.props.navigation.navigate('HomeNColetor');
 
             })
             .catch((error) => {
@@ -64,7 +64,7 @@ class HomeScreen extends React.Component {
 
     buttonPressCadastro() {
         console.log('called');
-        this.props.navigation.navigate('cadastroUsuario');
+        this.props.navigation.navigate('CadastroUsuario');
     }
 
     render() {
@@ -76,17 +76,12 @@ class HomeScreen extends React.Component {
 
             <View style={{ flex: 1, backgroundColor: "#7DD174", justifyContent: 'flex-start' }}>
 
-                {/* <Header
-                    leftComponent={{ icon: 'menu', color: '#fff' }}
-                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff' }}
-                /> */}
-
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                    {'\n'}
+                    {'\n'}
+                </Text>
                 <Text style={{ color: "blue" }}>    Nome de Usuário</Text>
                 <TextInput
                     name="email"
@@ -100,7 +95,10 @@ class HomeScreen extends React.Component {
                     }}
                 //  onChangeText={text => onChangeText(text)}
                 />
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
                 <Text style={{ color: "blue" }}>    Senha</Text>
                 <TextInput
                     name="password"
@@ -114,7 +112,10 @@ class HomeScreen extends React.Component {
                     }}
                 //onChangeText={text => onChangeText(text)}
                 />
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
 
                 <Button
                     title="Entrar"
@@ -125,20 +126,29 @@ class HomeScreen extends React.Component {
                         borderRadius: 30
                     }}
                 />
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
 
                 <Text style={{
                     color: "green", fontSize: 35,
                     fontWeight: "normal", textAlign: "center"
                 }}>Não tem conta ainda?</Text>
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
 
                 <Text style={{
                     color: "blue", fontSize: 20,
                     fontWeight: "normal", textAlign: "center"
                 }}>Faça sua conta clicando no botão abaixo.</Text>
 
-                <br></br>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
                 <Button
                     title="Realizar Cadastro"
                     onPress={this.buttonPressCadastro}
