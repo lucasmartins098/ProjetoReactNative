@@ -62,6 +62,8 @@ class HomeScreen extends React.Component {
             });
     }
 
+    
+
     buttonPressCadastro() {
         console.log('called');
         this.props.navigation.navigate('CadastroUsuario');

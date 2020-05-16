@@ -170,8 +170,7 @@ class CadastroUsuario extends React.Component {
                         onPress={() => this.props.navigation.push('Login')} />
 
                     <Text style={{
-                        color: "blue", fontSize: 20,
-                        fontWeight: "normal", textAlign: "center"
+                        color: "blue", fontWeight: "normal", textAlign: "center", fontSize: 20
                     }}>Digite as Informações de acordo com os seus dados ou da sua empresa.</Text>
                     <Text>
                         {'\n'}
@@ -185,7 +184,7 @@ class CadastroUsuario extends React.Component {
                         onChangeText={this.handleNomeRazaoSocialChange}
                         style={{
                             height: 40, borderColor: 'black', backgroundColor: "white",
-                            borderBottomWidth: 1.0,
+                            borderBottomWidth: 1,
                             borderRadius: 30,
                         }}
                     />
@@ -200,7 +199,7 @@ class CadastroUsuario extends React.Component {
                         onChangeText={this.handleEmailChange}
                         style={{
                             height: 40, borderColor: 'black', backgroundColor: "white",
-                            borderBottomWidth: 1.0,
+                            borderBottomWidth: 1,
                             borderRadius: 30,
                         }}
                     />
@@ -214,7 +213,7 @@ class CadastroUsuario extends React.Component {
                         onChangeText={this.handleTelefoneChange}
                         style={{
                             height: 40, borderColor: 'black', backgroundColor: "white",
-                            borderBottomWidth: 1.0,
+                            borderBottomWidth: 1,
                             borderRadius: 30,
                         }}
                     />
@@ -228,7 +227,7 @@ class CadastroUsuario extends React.Component {
                         onChangeText={this.handleLoginChange}
                         style={{
                             height: 40, borderColor: 'black', backgroundColor: "white",
-                            borderBottomWidth: 1.0,
+                            borderBottomWidth: 1,
                             borderRadius: 30,
                         }}
                     />
@@ -242,7 +241,7 @@ class CadastroUsuario extends React.Component {
                         onChangeText={this.handleSenhaChange}
                         style={{
                             height: 40, borderColor: 'black', backgroundColor: "white",
-                            borderBottomWidth: 1.0,
+                            borderBottomWidth: 1,
                             borderRadius: 30,
                         }}
                     />
@@ -265,7 +264,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleFotoPerfilChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                                 flex: 1
                             }}
@@ -306,7 +305,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleCEPChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -320,7 +319,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleEstadoChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -334,7 +333,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleMunicipioChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -348,7 +347,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleBairroChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -362,7 +361,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleRuaChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -376,7 +375,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleNumeroImovelChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -390,7 +389,7 @@ class CadastroUsuario extends React.Component {
                             onChangeText={this.handleComplementoChange}
                             style={{
                                 height: 40, borderColor: 'black', backgroundColor: "white",
-                                borderBottomWidth: 1.0,
+                                borderBottomWidth: 1,
                                 borderRadius: 30,
                             }}
                         />
@@ -401,7 +400,7 @@ class CadastroUsuario extends React.Component {
                     <Button
                         title="Enviar Dados"
                         onPress={this.buttonPress}
-                        style={{ borderBottomWidth: 1.0, borderRadius: 30 }}
+                        style={{ borderBottomWidth: 1, borderRadius: 30 }}
                     />
                 </ScrollView>
             </View>

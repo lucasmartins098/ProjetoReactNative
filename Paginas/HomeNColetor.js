@@ -1,152 +1,298 @@
-// import React, { Component, useState } from 'react';
-// import { Modal, Text, TouchableHighlight, View, Alert } from 'react-native';
+import * as React from 'react';
+import { Button, View, Text, TextInput, ScrollView, Image, ViewPropTypes } from 'react-native';
+import { Icon, CheckBox } from 'react-native-elements'
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
+import * as Permissions from 'expo-permissions';
 
-// import { Header } from 'react-native-elements'
+class CadastroUsuario extends React.Component {
 
-// class HomeNColetor extends React.Component {
-//   constructor(props) {
-//     super(props);
-    
-//   }
+  constructor(props) {
+    super(props);
+  }
 
-//   render() {
+  postData = async (str) => {
+    try {
+      let res = await fetch('http://localhost:51544/Usuario/CreateLixo', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "recordId": "1",
+        }),
+      });
+      res = await res.json();
+      console.log(res)
+      Alert.alert('onPress', res.json.str);
+    } catch (e) {
+      console.error(e);
+      debugger;
+    }
+  }
 
-
-//     const [modalVisible, setModalVisible] = useState(true);
-//     return (
-//       <View style={{ marginTop: 22 }}>
-//         <Modal
-//           animationType="slide"
-//           transparent={false}
-//           visible={modalVisible}
-//           onRequestClose={() => {
-//             Alert.alert('Modal has been closed.');
-//           }}>
-//           <View style={{ marginTop: 22 }}>
-//             <View>
-//               <Text>Hello World!</Text>
-  
-//               <TouchableHighlight
-//                 onPress={() => {
-//                   setModalVisible(!modalVisible);
-//                 }}>
-//                 <Text>Hide Modal</Text>
-//               </TouchableHighlight>
-//             </View>
-//           </View>
-//         </Modal>
-  
-//         <TouchableHighlight
-//           onPress={() => {
-//             setModalVisible(true);
-//           }}>
-//           <Text>Show Modal</Text>
-//         </TouchableHighlight>
-//       </View>
-//     );
-//   }
-// }
-
-// export default HomeNColetor;
-
-import React, { Component } from 'react';
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
-import Modal from 'react-native-modal';
-
-
-export default class Example extends Component {
   state = {
-    visibleModal: null,
+    NomeRazaoSocial: '',
+    Email: '',
+    Telefone: '',
+    Login: '',
+    Senha: '',
+    FotoPerfil: '',
+    TipoPerfil: false,
+    checked: false,
+    CEP: '',
+    Estado: '',
+    Municipio: '',
+    Bairro: '',
+    Rua: '',
+    NumeroImovel: '',
+    Complemento: '',
+    image: null
   };
 
-  _renderButton = (text, onPress) => (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.button}>
-        <Text>{text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  handleNomeRazaoSocialChange = NomeRazaoSocial => {
+    this.setState({ NomeRazaoSocial })
+  }
+  handleEmailChange = Email => {
+    this.setState({ Email })
+  }
+  handleTelefoneChange = Telefone => {
+    this.setState({ Telefone })
+  }
+  handleLoginChange = Login => {
+    this.setState({ Login })
+  }
+  handleSenhaChange = Senha => {
+    this.setState({ Senha })
+  }
+  handleFotoPerfilChange = FotoPerfil => {
+    this.setState({ FotoPerfil })
+  }
+  handleTipoPerfilChange = TipoPerfil => {
+    this.setState({ TipoPerfil })
+  }
+  handlecheckedChange = checked => {
+    this.setState({ checked })
+  }
+  handleCEPChange = CEP => {
+    this.setState({ CEP })
+  }
+  handleEstadoChange = Estado => {
+    this.setState({ Estado })
+  }
+  handleMunicipioChange = Municipio => {
+    this.setState({ Municipio })
+  }
+  handleBairroChange = Bairro => {
+    this.setState({ Bairro })
+  }
+  handleRuaChange = Rua => {
+    this.setState({ Rua })
+  }
+  handleNumeroImovelChange = NumeroImovel => {
+    this.setState({ NumeroImovel })
+  }
+  handleComplementoChange = Complemento => {
+    this.setState({ Complemento })
+  }
 
-  _renderModalContent = () => (
-    <View style={styles.modalContent}>
-      <Text>Hello!!</Text>
-      {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
-    </View>
-  );
+  buttonPress() {
+    this.CadastrarUsuario();
+  }
+
+  componentDidMount() {
+    this.getPermissionAsync();
+  }
+
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== 'granted') {
+        alert('Desculpe, nós precisamos da permissão do camera roll para isso funcionar!');
+      }
+    }
+  };
+
+  _pickImage = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        this.setState({ image: result.uri });
+      }
+
+      console.log(result);
+    } catch (E) {
+      console.log(E);
+    }
+  };
+
+  componentDidMount() {
+    this.getPermissionAsync();
+  }
+
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== 'granted') {
+        alert('Desculpe, nós precisamos da permissão do camera roll para isso funcionar!');
+      }
+    }
+  };
+
+  _pickImage = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        this.setState({ image: result.uri });
+      }
+
+      console.log(result);
+    } catch (E) {
+      console.log(E);
+    }
+  };
 
   render() {
+    const {
+      NomeRazaoSocial,
+      Email,
+      Telefone,
+      Login,
+      Senha,
+      FotoPerfil,
+      TipoPerfil,
+      checked,
+      CEP,
+      Estado,
+      Municipio,
+      Bairro,
+      Rua,
+      NumeroImovel,
+      Complemento
+    } = this.state;
+
+    let { image } = this.state;
+
+
+
     return (
-      <View style={styles.container}>
-        {this._renderButton('Default modal', () => this.setState({ visibleModal: 1 }))}
-        {this._renderButton('Sliding from the sides', () => this.setState({ visibleModal: 2 }))}
-        {this._renderButton('A slower modal', () => this.setState({ visibleModal: 3 }))}
-        {this._renderButton('Fancy modal!', () => this.setState({ visibleModal: 4 }))}
-        {this._renderButton('Bottom half modal', () => this.setState({ visibleModal: 5 }))}
-        <Modal isVisible={this.state.visibleModal == 1}>
-          {this._renderModalContent()}
-        </Modal>
-        <Modal
-          isVisible={this.state.visibleModal == 2}
-          animationIn={'slideInLeft'}
-          animationOut={'slideOutRight'}
-        >
-          {this._renderModalContent()}
-        </Modal>
-        <Modal
-          isVisible={this.state.visibleModal == 3}
-          animationInTiming={2000}
-          animationOutTiming={2000}
-          backdropTransitionInTiming={2000}
-          backdropTransitionOutTiming={2000}
-        >
-          {this._renderModalContent()}
-        </Modal>
-        <Modal
-          isVisible={this.state.visibleModal == 4}
-          backdropColor={'red'}
-          backdropOpacity={1}
-          animationIn={'zoomInDown'}
-          animationOut={'zoomOutUp'}
-          animationInTiming={1000}
-          animationOutTiming={1000}
-          backdropTransitionInTiming={1000}
-          backdropTransitionOutTiming={1000}
-        >
-          {this._renderModalContent()}
-        </Modal>
-        <Modal isVisible={this.state.visibleModal === 5} style={styles.bottomModal}>
-          {this._renderModalContent()}
-        </Modal>
+      <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: "#7DD174" }}>
+
+        <ScrollView>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+            <Text style={{
+              color: "green", fontSize: 35,
+              fontWeight: "normal", textAlign: "center"
+            }}>
+              O que deseja descartar?
+          </Text>
+            <Text>
+              {'\n'}
+              {'\n'}
+            </Text>
+            <Text style={{ color: "blue" }}>    Nome do Resíduo</Text>
+            <TextInput
+              name="email"
+              style={{
+                height: 40, borderColor: 'black', backgroundColor: "white",
+                borderBottomWidth: 1.0,
+                borderRadius: 30,
+              }} />
+
+            <Text>
+              {'\n'}
+            </Text>
+            <View style={{ flex: 1, flexDirection: "row" }}>
+
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Button title="clique aqui e escolha a foto do Resíduo" onPress={this._pickImage} />
+                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+              </View>
+              <Icon
+                name='image'
+                type='evilicon'
+                style={{ flex: 0.1 }}
+              />
+            </View>
+            <Text>
+              {'\n'}
+            </Text>
+
+            <Text style={{ color: "blue" }}>    Descrição do resíduo</Text>
+            <TextInput
+              name="email"
+              style={{
+                height: 40, borderColor: 'black', backgroundColor: "white",
+                borderBottomWidth: 1.0,
+                borderRadius: 30,
+              }} />
+            <Text>
+              {'\n'}
+            </Text>
+            <Button
+              title="Publicar resíduo"
+              onPress={() => this.postData('POST Button Click')}
+              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+            <Text>
+              {'\n'}
+              {'\n'}
+            </Text>
+          </View>
+          <Text>
+            {'\n'}
+            {'\n'}
+          </Text>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+            <Button
+              title="Encontrar coletor ou área de descarte"
+              onPress={() => this.postData('POST Button Click')}
+              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+          </View>
+          <Text>
+            {'\n'}
+            {'\n'}
+          </Text>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+            <Button
+              title="Obter informações e dicas sobre um resíduo"
+              onPress={() => this.postData('POST Button Click')}
+              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+          </View>
+          <Text>
+            {'\n'}
+            {'\n'}
+          </Text>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+            <Button
+              title="Publicar dúvidas sobre um resíduo"
+              onPress={() => this.postData('POST Button Click')}
+              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+          </View>
+          <Text>
+            {'\n'}
+            {'\n'}
+          </Text>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+            <Button
+              title="Publicar interesse em entregar resíduo para coleta"
+              onPress={() => this.postData('POST Button Click')}
+              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+          </View>
+        </ScrollView>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: 'lightblue',
-    padding: 12,
-    margin: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  bottomModal: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-});
+export default CadastroUsuario;
