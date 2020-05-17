@@ -190,7 +190,7 @@ class CadastroUsuario extends React.Component {
       <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: "#7DD174" }}>
 
         <ScrollView>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#7DD174" }}>
             <Text style={{
               color: "green", fontSize: 35,
               fontWeight: "normal", textAlign: "center"
@@ -253,7 +253,7 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
             <Button
               title="Encontrar coletor ou área de descarte"
               onPress={() => this.postData('POST Button Click')}
@@ -263,7 +263,7 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
             <Button
               title="Obter informações e dicas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
@@ -273,7 +273,7 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
             <Button
               title="Publicar dúvidas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
@@ -283,7 +283,7 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "green" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
             <Button
               title="Publicar interesse em entregar resíduo para coleta"
               onPress={() => this.postData('POST Button Click')}

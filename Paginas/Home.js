@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button, View, Text, TextInput, br } from 'react-native';
+import { Button, View, Text, TextInput, br, img } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Header, Input } from 'react-native-elements'
+import imageLogo from '../Paginas/images/Logo.png'
 
 class HomeScreen extends React.Component {
 
@@ -62,7 +63,7 @@ class HomeScreen extends React.Component {
             });
     }
 
-    
+
 
     buttonPressCadastro() {
         console.log('called');
@@ -78,10 +79,10 @@ class HomeScreen extends React.Component {
 
             <View style={{ flex: 1, backgroundColor: "#7DD174", justifyContent: 'flex-start' }}>
 
+                <View style={{ backgroundColor: "#7DD174", alignItems: "center" }}>
+                    <img src={imageLogo} style={{ height: 100, width: 100 }} alt='Logo da aplicação' />
+                </View>
                 <Text>
-                    {'\n'}
-                    {'\n'}
-                    {'\n'}
                     {'\n'}
                 </Text>
                 <Text style={{ color: "blue" }}>    Nome de Usuário</Text>
