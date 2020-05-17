@@ -46,7 +46,7 @@ function App() {
         <Stack.Screen name="Details" component={DetailsScreen} options={{ header: tituloCadastro }} />
         <Stack.Screen name="RetornoDados" component={RetornoDados} options={{ header: tituloCadastro }} />
         <Stack.Screen name="CadastroUsuario" component={CadastroUsuario} options={{ header: tituloCadastro }} />
-        <Stack.Screen name="HomeNColetor" component={HomeNColetor} options={{ header: PaginaInicialTitulo }} />
+        <Stack.Screen name="HomeNColetor" component={HomeNColetor} options={{ header: PaginaInicialTitulo, headerShown: false  }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

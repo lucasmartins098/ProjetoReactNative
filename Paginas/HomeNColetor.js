@@ -188,7 +188,10 @@ class CadastroUsuario extends React.Component {
 
     return (
       <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: "#7DD174" }}>
-
+        <Button
+          color="#228b22"
+          title="SAIR"
+        />
         <ScrollView>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#7DD174" }}>
             <Text style={{
@@ -253,8 +256,9 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
+            color="#32CD32"
               title="Encontrar coletor ou área de descarte"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -263,8 +267,9 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
+            color="#32CD32"
               title="Obter informações e dicas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -273,8 +278,9 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
+            color="#32CD32"
               title="Publicar dúvidas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -283,8 +289,9 @@ class CadastroUsuario extends React.Component {
             {'\n'}
             {'\n'}
           </Text>
-          <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#32CD32" }}>
+          <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
+            color="#32CD32"
               title="Publicar interesse em entregar resíduo para coleta"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
