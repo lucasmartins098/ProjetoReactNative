@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TextInput, ScrollView, Image, ViewPropTypes } from 'react-native';
+import { Button, View, Text, TextInput, ScrollView, Image, ViewPropTypes, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon, CheckBox } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
@@ -20,12 +20,14 @@ class CadastroUsuario extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          "recordId": "1",
+          "Residuo": this.state.Residuo,
+          "image": this.state.image,
+          "DescricaoResiduo": this.state.DescResiduo
         }),
       });
       res = await res.json();
       console.log(res)
-      Alert.alert('onPress', res.json.str);
+      alert('onPress', res.json.str);
     } catch (e) {
       console.error(e);
       debugger;
@@ -33,32 +35,19 @@ class CadastroUsuario extends React.Component {
   }
 
   state = {
-    NomeRazaoSocial: '',
-    Email: '',
-    Telefone: '',
-    Login: '',
-    Senha: '',
-    FotoPerfil: '',
-    TipoPerfil: false,
-    checked: false,
-    CEP: '',
-    Estado: '',
-    Municipio: '',
-    Bairro: '',
-    Rua: '',
-    NumeroImovel: '',
-    Complemento: '',
-    image: null
+    Residuo: '',
+    image: null,
+    DescResiduo: ''
   };
 
-  handleNomeRazaoSocialChange = NomeRazaoSocial => {
-    this.setState({ NomeRazaoSocial })
+  handleResiduoChange = Residuo => {
+    this.setState({ Residuo })
   }
   handleEmailChange = Email => {
     this.setState({ Email })
   }
-  handleTelefoneChange = Telefone => {
-    this.setState({ Telefone })
+  handleDescResiduoChange = DescResiduo => {
+    this.setState({ DescResiduo })
   }
   handleLoginChange = Login => {
     this.setState({ Login })
@@ -165,21 +154,8 @@ class CadastroUsuario extends React.Component {
 
   render() {
     const {
-      NomeRazaoSocial,
-      Email,
-      Telefone,
-      Login,
-      Senha,
-      FotoPerfil,
-      TipoPerfil,
-      checked,
-      CEP,
-      Estado,
-      Municipio,
-      Bairro,
-      Rua,
-      NumeroImovel,
-      Complemento
+      Residuo,
+      DescResiduo
     } = this.state;
 
     let { image } = this.state;
@@ -191,6 +167,7 @@ class CadastroUsuario extends React.Component {
         <Button
           color="#228b22"
           title="SAIR"
+          onPress={() => this.props.navigation.push('Login')}
         />
         <ScrollView>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "50px", borderColor: "#7DD174" }}>
@@ -204,9 +181,12 @@ class CadastroUsuario extends React.Component {
               {'\n'}
               {'\n'}
             </Text>
-            <Text style={{ color: "blue" }}>    Nome do Resíduo</Text>
+            {/* <Text style={{ color: "blue" }}>    Nome do Resíduo</Text> */}
             <TextInput
-              name="email"
+              placeholder="   Nome do Resíduo"
+              name="Residuo"
+              value={Residuo}
+              onChangeText={this.handleResiduoChange}
               style={{
                 height: 40, borderColor: 'black', backgroundColor: "white",
                 borderBottomWidth: 1.0,
@@ -219,22 +199,24 @@ class CadastroUsuario extends React.Component {
             <View style={{ flex: 1, flexDirection: "row" }}>
 
               <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Button title="clique aqui e escolha a foto do Resíduo" onPress={this._pickImage} />
-                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                <TouchableOpacity style={styles.button} title="clique aqui e escolha a foto do Resíduo" onPress={this._pickImage} >
+                  <Text style={styles.textBtn}>
+                    Escolher foto do Resíduo
+                  </Text>
+                </TouchableOpacity>
+                {image && <Image source={{ uri: image }} style={{ width: 200, height: 150 }} />}
               </View>
-              <Icon
-                name='image'
-                type='evilicon'
-                style={{ flex: 0.1 }}
-              />
             </View>
             <Text>
               {'\n'}
             </Text>
 
-            <Text style={{ color: "blue" }}>    Descrição do resíduo</Text>
+            {/* <Text style={{ color: "blue" }}>    Descrição do resíduo</Text> */}
             <TextInput
-              name="email"
+              placeholder="   Descrição do resíduo"
+              name="DescResiduo"
+              value={DescResiduo}
+              onChangeText={this.handleDescResiduoChange}
               style={{
                 height: 40, borderColor: 'black', backgroundColor: "white",
                 borderBottomWidth: 1.0,
@@ -243,10 +225,14 @@ class CadastroUsuario extends React.Component {
             <Text>
               {'\n'}
             </Text>
-            <Button
+            <TouchableOpacity
               title="Publicar resíduo"
               onPress={() => this.postData('POST Button Click')}
-              style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
+              style={styles.button} >
+              <Text style={styles.textBtn}>
+                Publicar resíduo
+              </Text>
+            </TouchableOpacity>
             <Text>
               {'\n'}
               {'\n'}
@@ -258,7 +244,7 @@ class CadastroUsuario extends React.Component {
           </Text>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
-            color="#32CD32"
+              color="#32CD32"
               title="Encontrar coletor ou área de descarte"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -269,7 +255,7 @@ class CadastroUsuario extends React.Component {
           </Text>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
-            color="#32CD32"
+              color="#32CD32"
               title="Obter informações e dicas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -280,7 +266,7 @@ class CadastroUsuario extends React.Component {
           </Text>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
-            color="#32CD32"
+              color="#32CD32"
               title="Publicar dúvidas sobre um resíduo"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -291,7 +277,7 @@ class CadastroUsuario extends React.Component {
           </Text>
           <View style={{ backgroundColor: '#32CD32', borderWidth: "20px", borderColor: "#32CD32" }}>
             <Button
-            color="#32CD32"
+              color="#32CD32"
               title="Publicar interesse em entregar resíduo para coleta"
               onPress={() => this.postData('POST Button Click')}
               style={{ borderBottomWidth: 1.0, borderRadius: 30 }} />
@@ -301,5 +287,42 @@ class CadastroUsuario extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#7DD174',
+  },
+  title: {
+    marginBottom: 80,
+    color: 'black',
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  input: {
+    margin: 10,
+    width: 300,
+    height: 60,
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderColor: 'white',
+    borderRadius: 3.17
+  },
+  button: {
+    marginTop: 10,
+    width: 260,
+    height: 60,
+    backgroundColor: '#00756c',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3.17
+  },
+  textBtn: {
+    color: 'white',
+    fontSize: 16
+  }
+})
 
 export default CadastroUsuario;

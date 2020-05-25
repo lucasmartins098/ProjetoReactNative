@@ -7,7 +7,7 @@ import "./Paginas/StatusBarConfig";
 
 import HomeScreen from './Paginas/Home';
 import DetailsScreen from './Paginas/Detalhes';
-import RetornoDados from './Paginas/RetornoDados';
+import RetornoDados from './Paginas/retornoDados';
 import CadastroUsuario from './Paginas/CadastroUsuario';
 import HomeNColetor from './Paginas/HomeNColetor';
 

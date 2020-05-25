@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TextInput, br, img } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Header, Input } from 'react-native-elements'
@@ -14,12 +14,12 @@ class HomeScreen extends React.Component {
     }
 
     state = {
-        email: '',
+        login: '',
         password: ''
     };
 
-    handleEmailChange = email => {
-        this.setState({ email })
+    handleloginChange = login => {
+        this.setState({ login })
     }
 
     handlePasswordChange = password => {
@@ -27,9 +27,9 @@ class HomeScreen extends React.Component {
     }
 
     onLogin = async () => {
-        const { email, password } = this.state
+        const { login, password } = this.state
         try {
-            if (email.length > 0 && password.length > 0) {
+            if (login.length > 0 && password.length > 0) {
                 this.props.navigation.navigate('App')
             }
         } catch (error) {
@@ -42,7 +42,7 @@ class HomeScreen extends React.Component {
     }
 
     RealizarLogin() {
-        return fetch('http://localhost:51544/Usuario/Autenticar/1?usuario=' + this.state.email + '&senha=' + this.state.password)
+        return fetch('http://localhost:51544/Usuario/Autenticar/1?usuario=' + this.state.login + '&senha=' + this.state.password)
             .then((response) => response.json())
             .then((responseJson) => {
 
@@ -72,7 +72,7 @@ class HomeScreen extends React.Component {
 
     render() {
 
-        const { email, password } = this.state;
+        const { login, password } = this.state;
 
         return (
 
@@ -85,11 +85,12 @@ class HomeScreen extends React.Component {
                 <Text>
                     {'\n'}
                 </Text>
-                <Text style={{ color: "blue" }}>    Nome de Usuário</Text>
+                {/* <Text style={{ color: "blue" }}>    Nome de Usuário</Text> */}
                 <TextInput
-                    name="email"
-                    value={email}
-                    onChangeText={this.handleEmailChange}
+                    placeholder="   Nome de Usuário"
+                    name="login"
+                    value={login}
+                    onChangeText={this.handleloginChange}
 
                     style={{
                         height: 40, borderColor: 'black', backgroundColor: "white",
@@ -102,8 +103,9 @@ class HomeScreen extends React.Component {
                     {'\n'}
                     {'\n'}
                 </Text>
-                <Text style={{ color: "blue" }}>    Senha</Text>
+                {/* <Text style={{ color: "blue" }}>    Senha</Text> */}
                 <TextInput
+                    placeholder="   Senha"
                     name="password"
                     value={password}
                     secureTextEntry
@@ -119,16 +121,17 @@ class HomeScreen extends React.Component {
                     {'\n'}
                     {'\n'}
                 </Text>
-
-                <Button
-                    title="Entrar"
-                    onPress={this.buttonPress}
-                    style={{
-                        height: 40, borderColor: 'black', backgroundColor: "white",
-                        borderBottomWidth: 1.0,
-                        borderRadius: 30
-                    }}
-                />
+                <View style={styles.container}>
+                    <TouchableOpacity
+                        title="Entrar"
+                        onPress={this.buttonPress}
+                        style={styles.button}
+                    >
+                        <Text style={styles.textBtn}>
+                            Entrar
+                        </Text>
+                    </TouchableOpacity>
+                </View>
                 <Text>
                     {'\n'}
                     {'\n'}
@@ -152,16 +155,62 @@ class HomeScreen extends React.Component {
                     {'\n'}
                     {'\n'}
                 </Text>
-                <Button
-                    title="Realizar Cadastro"
-                    onPress={this.buttonPressCadastro}
-                    style={{ borderBottomWidth: 1.0, borderRadius: 30 }}
-                />
+                <View style={styles.container}>
+                    <TouchableOpacity title="Realizar Cadastro"
+                        onPress={this.buttonPressCadastro}
+                        style={styles.button}>
+                        <Text style={styles.textBtn}>
+                            Realizar Cadastro
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <Text>
+                    {'\n'}
+                    {'\n'}
+                </Text>
 
             </View >
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#7DD174',
+    },
+    title: {
+        marginBottom: 80,
+        color: 'black',
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    input: {
+        margin: 10,
+        width: 300,
+        height: 60,
+        borderWidth: 1,
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderRadius: 3.17
+    },
+    button: {
+        marginTop: 10,
+        width: 300,
+        height: 60,
+        backgroundColor: '#00756c',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 3.17
+    },
+    textBtn: {
+        color: 'white',
+        fontSize: 16
+    }
+})
+
 
 // export default function HomeScreenFunction({ navigation }) {
 //     return (

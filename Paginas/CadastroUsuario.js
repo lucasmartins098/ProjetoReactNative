@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TextInput, ScrollView, Image } from 'react-native';
+import { Button, View, Text, TextInput, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon, CheckBox } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
@@ -159,16 +159,20 @@ class CadastroUsuario extends React.Component {
 
         return (
             <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: "#7DD174" }}>
-                <Text>
-                    {'\n'}
-                </Text>
+
 
                 <ScrollView>
 
-                    <Button
+                    <TouchableOpacity
                         title="Voltar ao menu anterior"
-                        onPress={() => this.props.navigation.push('Login')} />
-
+                        onPress={() => this.props.navigation.push('Login')} style={styles.button}>
+                        <Text style={styles.textBtn}>
+                            Voltar ao menu anterior
+                            </Text>
+                    </TouchableOpacity>
+                    <Text>
+                        {'\n'}
+                    </Text>
                     <Text style={{
                         color: "blue", fontWeight: "normal", textAlign: "center", fontSize: 20
                     }}>Digite as Informações de acordo com os seus dados ou da sua empresa.</Text>
@@ -177,8 +181,9 @@ class CadastroUsuario extends React.Component {
                         {'\n'}
                     </Text>
 
-                    <Text style={{ color: "blue" }}>   Nome / Razão Social</Text>
+                    {/* <Text style={{ color: "blue" }}>   Nome / Razão Social</Text> */}
                     <TextInput
+                        placeholder="   Nome / Razão Social"
                         name="NomeRazaoSocial"
                         value={NomeRazaoSocial}
                         onChangeText={this.handleNomeRazaoSocialChange}
@@ -192,8 +197,9 @@ class CadastroUsuario extends React.Component {
                         {'\n'}
                     </Text>
 
-                    <Text style={{ color: "blue" }}>   Email</Text>
+                    {/* <Text style={{ color: "blue" }}>   Email</Text> */}
                     <TextInput
+                        placeholder="   Email"
                         name="email"
                         value={Email}
                         onChangeText={this.handleEmailChange}
@@ -206,8 +212,9 @@ class CadastroUsuario extends React.Component {
                     <Text>
                         {'\n'}
                     </Text>
-                    <Text style={{ color: "blue" }}>   Telefone</Text>
+                    {/* <Text style={{ color: "blue" }}>   Telefone</Text> */}
                     <TextInput
+                        placeholder="   Telefone"
                         name="Telefone"
                         value={Telefone}
                         onChangeText={this.handleTelefoneChange}
@@ -220,8 +227,9 @@ class CadastroUsuario extends React.Component {
                     <Text>
                         {'\n'}
                     </Text>
-                    <Text style={{ color: "blue" }}>   Login</Text>
+                    {/* <Text style={{ color: "blue" }}>   Login</Text> */}
                     <TextInput
+                        placeholder="   Login"
                         name="Login"
                         value={Login}
                         onChangeText={this.handleLoginChange}
@@ -234,8 +242,9 @@ class CadastroUsuario extends React.Component {
                     <Text>
                         {'\n'}
                     </Text>
-                    <Text style={{ color: "blue" }}>   Senha</Text>
+                    {/* <Text style={{ color: "blue" }}>   Senha</Text> */}
                     <TextInput
+                        placeholder="   Senha"
                         name="Senha"
                         value={Senha}
                         onChangeText={this.handleSenhaChange}
@@ -248,7 +257,7 @@ class CadastroUsuario extends React.Component {
                     <Text>
                         {'\n'}
                     </Text>
-                    <Text style={{ color: "blue" }}>   Foto de Perfil</Text>
+                    {/* <Text style={{ color: "blue" }}>   Foto de Perfil</Text> */}
 
 
                     <Text>
@@ -270,17 +279,19 @@ class CadastroUsuario extends React.Component {
                             }}
                         /> */}
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Button title="Clique aqui para escolher a sua foto de perfil" onPress={this._pickImage} />
+                            <TouchableOpacity title="Clique aqui para escolher a sua foto de perfil" onPress={this._pickImage} style={styles.button}>
+                                <Text style={styles.textBtn}>
+                                    Clique aqui para escolher a sua foto de perfil
+                                </Text>
+                            </TouchableOpacity>
                             {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
                         </View>
-                        <Icon
-                            name='image'
-                            type='evilicon'
-                            style={{ flex: 0.1 }}
-                        />
-                    </View>
 
-                    <Text style={{ color: "blue" }}>   Tipo de Perfil</Text>
+                    </View>
+                    <Text>
+                        {'\n'}
+                    </Text>
+                    {/* <Text style={{ color: "blue" }}>   Tipo de Perfil</Text> */}
                     <CheckBox
                         name="TipoPerfil"
                         value={TipoPerfil}
@@ -298,8 +309,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    CEP</Text>
+                        {/* <Text style={{ color: "blue" }}>    CEP</Text> */}
                         <TextInput
+                            placeholder="   CEP"
                             name="CEP"
                             value={CEP}
                             onChangeText={this.handleCEPChange}
@@ -312,8 +324,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Estado</Text>
+                        {/* <Text style={{ color: "blue" }}>    Estado</Text> */}
                         <TextInput
+                            placeholder="   Estado"
                             name="Estado"
                             value={Estado}
                             onChangeText={this.handleEstadoChange}
@@ -326,8 +339,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Município</Text>
+                        {/* <Text style={{ color: "blue" }}>    Município</Text> */}
                         <TextInput
+                            placeholder="   Município"
                             name="Municipio"
                             value={Municipio}
                             onChangeText={this.handleMunicipioChange}
@@ -340,8 +354,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Bairro</Text>
+                        {/* <Text style={{ color: "blue" }}>    Bairro</Text> */}
                         <TextInput
+                            placeholder="   Bairro"
                             name="Bairro"
                             value={Bairro}
                             onChangeText={this.handleBairroChange}
@@ -354,8 +369,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Rua</Text>
+                        {/* <Text style={{ color: "blue" }}>    Rua</Text> */}
                         <TextInput
+                            placeholder="   Rua"
                             name="Rua"
                             value={Rua}
                             onChangeText={this.handleRuaChange}
@@ -368,8 +384,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Número do imóvel</Text>
+                        {/* <Text style={{ color: "blue" }}>    Número do imóvel</Text> */}
                         <TextInput
+                            placeholder="   Número do imóvel"
                             name="NumeroImovel"
                             value={NumeroImovel}
                             onChangeText={this.handleNumeroImovelChange}
@@ -382,8 +399,9 @@ class CadastroUsuario extends React.Component {
                         <Text>
                             {'\n'}
                         </Text>
-                        <Text style={{ color: "blue" }}>    Complemento</Text>
+                        {/* <Text style={{ color: "blue" }}>    Complemento</Text> */}
                         <TextInput
+                            placeholder="   Complemento"
                             name="Complemento"
                             value={Complemento}
                             onChangeText={this.handleComplementoChange}
@@ -397,15 +415,55 @@ class CadastroUsuario extends React.Component {
                     <Text>
                         {'\n'}
                     </Text>
-                    <Button
+                    <TouchableOpacity 
                         title="Enviar Dados"
                         onPress={this.buttonPress}
-                        style={{ borderBottomWidth: 1, borderRadius: 30 }}
-                    />
+                        style={styles.button}>
+                        <Text style={styles.textBtn}>
+                            Enviar Dados
+                        </Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#7DD174',
+    },
+    title: {
+        marginBottom: 80,
+        color: 'black',
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    input: {
+        margin: 10,
+        width: 300,
+        height: 60,
+        borderWidth: 1,
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderRadius: 3.17
+    },
+    button: {
+        marginTop: 10,
+        width: 360,
+        height: 60,
+        backgroundColor: '#00756c',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 3.17
+    },
+    textBtn: {
+        color: 'white',
+        fontSize: 16
+    }
+})
 
 export default CadastroUsuario;
